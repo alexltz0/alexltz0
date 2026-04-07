@@ -1,4 +1,10 @@
 <h1 align="center">Hi 👋, I'm Alex</h1>
+- 💬 Ask me about **anything**
+
+- 👨‍💻 All of my projects are available at [www.placeholder.com](www.placeholder.com)
+
+- 📫 How to reach me **heyalex34@gmail.com**
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://twitter.com/alexltz0" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="alexltz0" height="30" width="40" /></a>
