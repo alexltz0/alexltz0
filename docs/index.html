@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OBSIDIAN_NEXUS | Digital Architect Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#0035be",
+                      "secondary-fixed": "#f9d8ff",
+                      "on-primary-container": "#efefff",
+                      "on-tertiary-fixed": "#002021",
+                      "surface-container": "#201f1f",
+                      "on-secondary-fixed": "#320046",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-tint": "#b8c3ff",
+                      "surface-container-high": "#2a2a2a",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "on-surface-variant": "#c4c5d9",
+                      "secondary-fixed-dim": "#ecb1ff",
+                      "error": "#ffb4ab",
+                      "on-primary": "#002388",
+                      "inverse-primary": "#124af0",
+                      "tertiary-container": "#00797e",
+                      "surface-bright": "#3a3939",
+                      "secondary-container": "#d05bff",
+                      "on-surface": "#e5e2e1",
+                      "on-primary-fixed": "#001356",
+                      "primary-fixed": "#dde1ff",
+                      "tertiary": "#00dce5",
+                      "on-background": "#e5e2e1",
+                      "secondary": "#ecb1ff",
+                      "surface-container-highest": "#353534",
+                      "primary-container": "#2e5bff",
+                      "inverse-on-surface": "#313030",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary-container": "#480063",
+                      "surface-dim": "#131313",
+                      "on-tertiary-container": "#bbfbff",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#63f7ff",
+                      "on-secondary-fixed-variant": "#75009e",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#004f53",
+                      "surface": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "outline-variant": "#434656",
+                      "outline": "#8e90a2",
+                      "on-tertiary": "#003739",
+                      "error-container": "#93000a",
+                      "on-secondary": "#520070",
+                      "primary": "#b8c3ff",
+                      "background": "#131313",
+                      "tertiary-fixed-dim": "#00dce5",
+                      "surface-variant": "#353534"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Manrope"],
+                      "label": ["Space Grotesk"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e5e2e1; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .text-3d {
+            text-shadow: 0 1px 0 #2e5bff, 0 2px 0 #2e5bff, 0 3px 0 #2e5bff, 0 4px 0 #2e5bff, 0 5px 0 #2e5bff, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+        }
+        .glass { background: rgba(58, 57, 57, 0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .grid-pattern {
+            background-image: radial-gradient(circle, rgba(46, 91, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(46, 91, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center">
+<div class="bg-neutral-950/60 backdrop-blur-xl rounded-full mt-4 mx-auto max-w-fit px-6 py-2 border border-blue-500/20 font-['Space_Grotesk'] tracking-tight shadow-[0_0_20px_rgba(46,91,255,0.15)] flex items-center gap-8">
+<a id="nav-logo" class="text-xl font-bold tracking-tighter text-blue-400" href="#">OBSIDIAN_NEXUS</a>
+<div class="hidden md:flex items-center gap-6" id="nav-links">
+<a class="nav-link text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="#stack" data-nav="stack">Stack</a>
+<a class="nav-link text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="#projects" data-nav="projects">Projects</a>
+<a class="nav-link text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="#contact" data-nav="contact">Contact</a>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-5 py-1.5 rounded-full text-sm scale-95 active:scale-90 transition-transform">Hire Me</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<div class="absolute inset-0 grid-pattern opacity-40"></div>
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-[120px]"></div>
+<div class="container mx-auto px-6 relative z-10 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/20 mb-8">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">System Status: Online</span>
+</div>
+<h1 class="text-6xl md:text-9xl font-headline font-bold text-on-surface tracking-tighter leading-none mb-6">
+<span class="block">DIGITAL</span>
+<span class="block text-3d text-primary-fixed-dim">ARCHITECT</span>
+</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl font-light mb-12 tracking-wide">
+                Ich erschaffe hochperformante digitale Ökosysteme – von skalierbaren .NET-Backends bis hin zu komplexen Game-Server-Architekturen. Engineering trifft auf Vision.
+            </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<a class="group relative px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-md font-bold tracking-tight overflow-hidden transition-all hover:scale-[1.02]" href="#projects">
+<span class="relative z-10">PROJEKTE ENTDECKEN</span>
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
+</a>
+<a class="px-8 py-4 border border-outline-variant/30 text-on-surface hover:bg-surface-bright/20 backdrop-blur-md rounded-md font-bold transition-all" href="#contact">
+                    KONTAKT AUFNEHMEN
+                </a>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+<span class="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface-variant">Scroll for depth</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+</header>
+<!-- Skills / Mastery Section -->
+<section class="py-32 bg-surface-dim" id="stack">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<div class="md:col-span-4 md:sticky md:top-32">
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-6 leading-tight">
+                        Kernkompetenzen &amp; <span class="text-tertiary">Technologien</span>
+</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Mein Fokus liegt auf Effizienz, Skalierbarkeit und technischer Perfektion. Jede Zeile Code ist ein Baustein in einem größeren digitalen Monument.
+                    </p>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-label text-secondary uppercase tracking-wider border border-secondary/10">Architecture</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-label text-tertiary uppercase tracking-wider border border-tertiary/10">Optimization</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-label text-primary uppercase tracking-wider border border-primary/10">Security</span>
+</div>
+</div>
+<div class="md:col-span-8 grid grid-cols-1 gap-6">
+<!-- Skill Card 1 -->
+<div class="group p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-primary/40 transition-all duration-500">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="terminal">terminal</span>
+<span class="text-[10px] font-label text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">01 / BACKEND</span>
+</div>
+<h3 class="text-2xl font-headline font-bold text-on-surface mb-4">.NET &amp; C# Mastery</h3>
+<p class="text-on-surface-variant mb-6">Entwicklung von robusten, hochperformanten Backend-Systemen. Fokus auf Microservices, Dependency Injection und asynchrone Programmierung für maximale Effizienz.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">ASP.NET Core</span>
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">Entity Framework</span>
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">SQL Server</span>
+</div>
+</div>
+<!-- Skill Card 2 -->
+<div class="group p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-secondary/40 transition-all duration-500">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="sports_esports">sports_esports</span>
+<span class="text-[10px] font-label text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">02 / GAMING</span>
+</div>
+<h3 class="text-2xl font-headline font-bold text-on-surface mb-4">Game Server Solutions (Lua)</h3>
+<p class="text-on-surface-variant mb-6">Spezialisierte Skripting-Lösungen für FiveM/RedM. Optimierung von Ressourcenverbrauch und Implementierung komplexer Spielmechaniken für immersive Erfahrungen.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">Lua Scripting</span>
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">Server Optimization</span>
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">Custom Frameworks</span>
+</div>
+</div>
+<!-- Skill Card 3 -->
+<div class="group p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-tertiary/40 transition-all duration-500">
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="code_blocks">code_blocks</span>
+<span class="text-[10px] font-label text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">03 / WEB</span>
+</div>
+<h3 class="text-2xl font-headline font-bold text-on-surface mb-4">Web Engineering</h3>
+<p class="text-on-surface-variant mb-6">Moderne Web-Architekturen mit Fokus auf User Experience und Performance. Von Single Page Applications bis hin zu komplexen Dashboards.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">Tailwind CSS</span>
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">React / Vue</span>
+<span class="text-xs bg-surface-dim px-3 py-1 rounded border border-outline-variant/10">TypeScript</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Bento Grid -->
+<section class="py-32 bg-surface-container-lowest" id="projects">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-4 tracking-tighter">Ausgewählte <span class="text-primary">Werke</span></h2>
+<p class="text-on-surface-variant max-w-xl">Ein Einblick in meine digitalen Konstruktionen – von Gaming-Infrastruktur bis zu Enterprise-Web-Apps.</p>
+</div>
+<button class="text-tertiary font-label text-sm uppercase tracking-widest flex items-center gap-2 group">
+                    Alle Projekte ansehen
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
+<!-- Project 1: Large Bento -->
+<div class="md:col-span-8 glass rounded-2xl p-1 relative overflow-hidden group">
+<div class="absolute inset-0 z-0 scale-105 group-hover:scale-110 transition-transform duration-700">
+<img alt="Nexus Engine" class="w-full h-full object-cover opacity-50" data-alt="vibrant abstract digital data stream with electric blue and purple lines flowing through a dark void representing high speed networking" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcl6iDGav2fYImalrI02oiqL8VF_3LUdDrqI0K4ADDyoKxs0_x43iGEU-3DJ215zV4EMBluGxVT4nJlvNmuvfo4Ce-GKfBRDF4uyUdQUixqZhm-_zxPzYe_3T77hOKY43c_3Ssl7i95UYVGSwUKU16ONs_AcL_rxkvcIf_zzMJ-wZW8gNiSW4S2PMGKilUiFv_uArb10Cqv5fsGFbhMMSMz_HqVdlPFFK6UAptwJI90HqmsPA1-GR27zxXEuRa0hfFpG0X0gyFicls"/>
+</div>
+<div class="relative z-10 h-full flex flex-col justify-end p-8 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent">
+<span class="text-xs font-label text-tertiary uppercase tracking-[0.2em] mb-2">Game Server Infrastructure</span>
+<h3 class="text-3xl font-headline font-bold mb-4">Nexus Framework 2.0</h3>
+<p class="text-on-surface-variant max-w-lg mb-6">Ein hochoptimiertes Lua-Framework für FiveM, das die Serverleistung um 40% steigert und modulare Plugin-Architekturen ermöglicht.</p>
+<div class="flex gap-4">
+<button class="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+</button>
+<button class="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="link">link</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Project 2: Vertical Bento -->
+<div class="md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 flex flex-col group hover:border-secondary/30 transition-all">
+<div class="mb-auto">
+<div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="database" data-weight="fill" style="font-variation-settings: 'FILL' 1;">database</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Obsidian API</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Skalierbare REST-API Architektur basierend auf .NET 8 für ein globales Logistikunternehmen mit Echtzeit-Tracking.</p>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant">Client</span>
+<span class="text-on-surface">LogisTech GmbH</span>
+</div>
+<div class="flex justify-between items-center text-xs border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant">Tech</span>
+<span class="text-on-surface">C#, SQL Server, Redis</span>
+</div>
+</div>
+</div>
+<!-- Project 3: Small Bento -->
+<div class="md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-all group">
+<h3 class="text-xl font-headline font-bold mb-3">Cyber-HUD UI</h3>
+<p class="text-on-surface-variant text-sm mb-6">Minimalistisches Web-Interface für Server-Monitoring-Tools.</p>
+<div class="w-full aspect-video bg-surface-dim rounded-lg overflow-hidden border border-outline-variant/5">
+<img alt="UI Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="minimalist tech interface with clean typography and neon blue indicators on a dark background showing system metrics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw6jKjhZamwv51RCF9IWwg3tKrH3WFDOle-bqC7cp7MTvxDZBKOBv_ZJwF2oi3HM_JN6Fpj2n81qcmGm5LXLFY_SsZzQh8JzDV7PymrF9f8Gt0py5H_ctd8pT7ofxWPaniPKOuzxC3TeGulgANUTcBSWJ2jG1HFzTnlOQEiwmDWh6kriZSZ-ouGwJ7fOBigqqNeZ9IDcuqJhwtipmoIsW2eapK4KPhU5Swb30a2lf_UGXQkytx5Y7tPJAQy7fcibsTflOPAMv-51W7"/>
+</div>
+</div>
+<!-- Project 4: Long Bento -->
+<div class="md:col-span-8 glass border border-primary/20 rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-center group">
+<div class="w-full md:w-1/2">
+<h3 class="text-2xl font-headline font-bold mb-4">RedM Roleplay System</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Ein umfassendes Wirtschaftssystem für RedM Server, geschrieben in Lua. Inklusive Inventar-Management und komplexer Berufsstrukturen.</p>
+<ul class="space-y-2 mb-6">
+<li class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Optimization-first approach
+                            </li>
+<li class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Advanced NUI integration
+                            </li>
+</ul>
+<button class="text-primary font-label text-xs uppercase tracking-widest border-b border-primary/30 pb-1">Case Study lesen</button>
+</div>
+<div class="w-full md:w-1/2 aspect-video bg-surface-container rounded-xl overflow-hidden shadow-2xl relative">
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<img alt="RP System" class="w-full h-full object-cover" data-alt="cinematic moody image of a high tech computer setup in a dark room with blue and purple ambient lighting reflecting on the screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1WZdpDKzBaWxUZFz_l3j7DSCxnUu0o3NYEAyIzygXxNtT_q9SL0lvaenZhQJ4Yl5pF2NwKykB6KTTHJYDaYpxTHANvQbOgO3CFFuNqY04YnTgs-tEF430K_lV_5xeSNDUED0-El1ogwlyHbXF83qIaQs_gx1viFXCUdEStUhiTZAwMICajX5A58z9-oGBmuRf07It69oWRDdYZeoSZzBCL1jC4CTrnBGH1oZMU8ysXcbpAqS5BqpLUdP32euLR5JRjDWq7T9aTSni"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Terminal Contact Section -->
+<section class="py-32 bg-surface" id="contact">
+<div class="container mx-auto px-6">
+<div class="max-w-4xl mx-auto">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl">
+<!-- Terminal Header -->
+<div class="bg-surface-container-high px-4 py-3 border-b border-outline-variant/30 flex justify-between items-center">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/50"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container/50"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/50"></div>
+</div>
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">contact_module.sh — 128-bit Encryption</span>
+</div>
+<div class="p-8 md:p-12">
+<div class="mb-10">
+<h2 class="text-3xl font-headline font-bold text-on-surface mb-2">Initialisiere Verbindung...</h2>
+<p class="text-on-surface-variant font-mono text-sm">Bereit für neue Herausforderungen. Senden Sie mir eine Nachricht.</p>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[10px] font-label uppercase tracking-widest text-primary ml-1">Identity.Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-md py-4 px-5 text-on-surface focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant/30 transition-all" placeholder="Geben Sie Ihren Namen ein..." type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-label uppercase tracking-widest text-primary ml-1">Identity.Email</label>
+<input class="w-full bg-surface-container-low border-none rounded-md py-4 px-5 text-on-surface focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant/30 transition-all" placeholder="ihre@email.de" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-label uppercase tracking-widest text-primary ml-1">Message.Payload</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-md py-4 px-5 text-on-surface focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant/30 transition-all resize-none" placeholder="Schreiben Sie hier Ihre Nachricht..." rows="4"></textarea>
+</div>
+<div class="pt-4 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="text-[10px] font-mono text-on-surface-variant opacity-60">
+                                    &gt; STATUS: WAITING_FOR_INPUT<br/>
+                                    &gt; LOCATION: VOID_MAIN_NET
+                                </div>
+<button class="w-full md:w-auto px-10 py-4 bg-tertiary text-on-tertiary font-bold rounded-md hover:shadow-[0_0_20px_rgba(0,220,229,0.3)] transition-all flex items-center justify-center gap-3">
+                                    EXECUTE_SEND
+                                    <span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-neutral-950 w-full px-8 py-12 border-t border-blue-900/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-blue-400 font-['Space_Grotesk'] text-lg font-bold tracking-tighter">OBSIDIAN_NEXUS</span>
+<p class="text-neutral-500 font-['Manrope'] text-xs uppercase tracking-widest text-center md:text-left"> 2024 THE DIGITAL ARCHITECT. ENGINEERED IN THE VOID.</p>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-neutral-500 hover:text-blue-400 transition-all font-['Manrope'] text-xs uppercase tracking-widest opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-neutral-500 hover:text-blue-400 transition-all font-['Manrope'] text-xs uppercase tracking-widest opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="text-neutral-500 hover:text-blue-400 transition-all font-['Manrope'] text-xs uppercase tracking-widest opacity-80 hover:opacity-100" href="#">Discord</a>
+</div>
+<div class="hidden md:block">
+<div class="flex items-center gap-2 text-neutral-600">
+<span class="text-[10px] font-mono">LAT: 52.5200</span>
+<span class="w-1 h-1 rounded-full bg-neutral-800"></span>
+<span class="text-[10px] font-mono">LNG: 13.4050</span>
+</div>
+</div>
+</footer>
+<!-- Progress Scanner Component -->
+<div class="fixed top-0 left-0 w-full h-[2px] z-[60] bg-tertiary-container/20">
+<div id="scroll-progress" class="h-full bg-tertiary shadow-[0_0_10px_#00dce5] transition-none" style="width: 0%;"></div>
+</div>
+<script>
+  (function() {
+    const bar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = percent + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  })();
+
+  (function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = [];
+    navLinks.forEach(function(link) {
+      const id = link.getAttribute('href').substring(1);
+      const sec = document.getElementById(id);
+      if (sec) sections.push({ id: id, el: sec, link: link });
+    });
+
+    function setActive(activeLink) {
+      navLinks.forEach(function(l) {
+        l.classList.remove('text-blue-400');
+        l.classList.add('text-neutral-400');
+      });
+      if (activeLink) {
+        activeLink.classList.remove('text-neutral-400');
+        activeLink.classList.add('text-blue-400');
+      }
+    }
+
+    var logo = document.getElementById('nav-logo');
+
+    function onScroll() {
+      var scrollPos = window.scrollY + window.innerHeight / 3;
+      var current = null;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].el.offsetTop <= scrollPos) {
+          current = sections[i].link;
+        }
+      }
+      setActive(current);
+
+      if (window.scrollY > 100) {
+        logo.classList.remove('text-blue-400');
+        logo.classList.add('text-neutral-400');
+      } else {
+        logo.classList.remove('text-neutral-400');
+        logo.classList.add('text-blue-400');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+</body></html>
