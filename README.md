@@ -1,4 +1,5 @@
-<h1 align="center">Hi 👋, I'm Alex</h1>
+<h1>Hi 👋, I'm Alex</h1>
+
 - 💬 Ask me about **anything**
 
 - 👨‍💻 All of my projects are available at [www.placeholder.com](www.placeholder.com)
