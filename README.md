@@ -2,7 +2,7 @@
 
 - 💬 Ask me about **anything**
 
-- 👨‍💻 All of my projects are available at [https://alexltz0.github.io/alexltz0](https://alexltz0.github.io/alexltz0/)
+- 👨‍💻 All of my projects are available at **[https://alexltz0.github.io/alexltz0](https://alexltz0.github.io/alexltz0/)**
 
 - 📫 How to reach me **heyalex34@gmail.com**
 
