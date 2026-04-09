@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ALEX | All Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/x-icon" href="favicon.png">
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant":"#0035be","secondary-fixed":"#f9d8ff","on-primary-container":"#efefff","on-tertiary-fixed":"#002021","surface-container":"#201f1f","on-secondary-fixed":"#320046","surface-container-lowest":"#0e0e0e","surface-tint":"#b8c3ff","surface-container-high":"#2a2a2a","primary-fixed-dim":"#b8c3ff","on-surface-variant":"#c4c5d9","secondary-fixed-dim":"#ecb1ff","error":"#ffb4ab","on-primary":"#002388","inverse-primary":"#124af0","tertiary-container":"#00797e","surface-bright":"#3a3939","secondary-container":"#d05bff","on-surface":"#e5e2e1","on-primary-fixed":"#001356","primary-fixed":"#dde1ff","tertiary":"#00dce5","on-background":"#e5e2e1","secondary":"#ecb1ff","surface-container-highest":"#353534","primary-container":"#2e5bff","inverse-on-surface":"#313030","surface-container-low":"#1c1b1b","on-secondary-container":"#480063","surface-dim":"#131313","on-tertiary-container":"#bbfbff","on-error":"#690005","tertiary-fixed":"#63f7ff","on-secondary-fixed-variant":"#75009e","on-error-container":"#ffdad6","on-tertiary-fixed-variant":"#004f53","surface":"#131313","inverse-surface":"#e5e2e1","outline-variant":"#434656","outline":"#8e90a2","on-tertiary":"#003739","error-container":"#93000a","on-secondary":"#520070","primary":"#b8c3ff","background":"#131313","tertiary-fixed-dim":"#00dce5","surface-variant":"#353534"
+          },
+          "borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+          "fontFamily":{"headline":["Space Grotesk"],"body":["Manrope"],"label":["Space Grotesk"]}
+        },
+      },
+    }
+</script>
+<style>
+    body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e5e2e1; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+    .font-headline { font-family: 'Space Grotesk', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+    .grid-pattern {
+        background-image: radial-gradient(circle, rgba(46, 91, 255, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    @keyframes morph {
+        0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+    @keyframes pulse-border {
+        0%, 100% { border-color: rgba(46, 91, 255, 0.1); }
+        50% { border-color: rgba(46, 91, 255, 0.4); }
+    }
+    @keyframes count-up {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #b8c3ff, #2e5bff, #00dce5, #ecb1ff);
+        background-size: 300% 300%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 6s ease infinite;
+    }
+    .morph-blob { animation: morph 8s ease-in-out infinite; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    .hero-animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+    .hero-delay-1 { animation-delay: 0.2s; }
+    .hero-delay-2 { animation-delay: 0.4s; }
+    .hero-delay-3 { animation-delay: 0.6s; }
+
+    .project-card {
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    .project-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 0.5s;
+        background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(46, 91, 255, 0.06), transparent 40%);
+        pointer-events: none;
+        z-index: 1;
+    }
+    .project-card:hover::before { opacity: 1; }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(46, 91, 255, 0.3); }
+
+    .tag { transition: all 0.3s; }
+    .tag:hover { background: rgba(46, 91, 255, 0.15); border-color: rgba(46, 91, 255, 0.4); }
+
+    .stat-number {
+        font-variant-numeric: tabular-nums;
+    }
+
+    .timeline-dot {
+        width: 12px; height: 12px; border-radius: 50%;
+        border: 2px solid rgba(46, 91, 255, 0.5);
+        background: #131313;
+        position: relative;
+        z-index: 2;
+    }
+    .timeline-dot.active {
+        background: #2e5bff;
+        border-color: #2e5bff;
+        box-shadow: 0 0 12px rgba(46, 91, 255, 0.5);
+    }
+
+    .btn-glow:hover {
+        box-shadow: 0 0 25px rgba(46, 91, 255, 0.3);
+    }
+</style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center">
+<div class="bg-neutral-950/60 backdrop-blur-xl rounded-full mt-4 mx-auto max-w-fit px-6 py-2 border border-blue-500/20 font-['Space_Grotesk'] tracking-tight shadow-[0_0_20px_rgba(46,91,255,0.15)] flex items-center gap-8">
+<a class="text-xl font-bold tracking-tighter text-blue-400" href="index.html">ALEX</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="index.html#stack">Stack</a>
+<a class="text-blue-400 text-sm uppercase tracking-widest font-medium" href="projects.html">Projects</a>
+<a class="text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="index.html#contact">Contact</a>
+</div>
+<a href="index.html#contact" class="hidden md:inline-block bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-5 py-1.5 rounded-full text-sm scale-95 active:scale-90 transition-transform">Hire Me</a>
+</div>
+</nav>
+
+<!-- Hero Header -->
+<header class="relative pt-32 pb-20 overflow-hidden">
+<div class="absolute inset-0 grid-pattern opacity-30"></div>
+<div class="absolute top-20 -right-40 w-[500px] h-[500px] bg-primary-container/8 morph-blob blur-[140px]"></div>
+<div class="absolute bottom-0 -left-40 w-[400px] h-[400px] bg-tertiary/5 morph-blob blur-[120px]" style="animation-delay: -3s;"></div>
+
+<div class="container mx-auto px-6 relative z-10">
+<a href="index.html" class="hero-animate hero-delay-1 inline-flex items-center gap-2 text-neutral-500 hover:text-blue-400 transition-colors mb-8 group">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-xs uppercase tracking-widest font-label">Back to Home</span>
+</a>
+
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
+<div>
+<h1 class="hero-animate hero-delay-1 text-5xl md:text-7xl font-headline font-bold tracking-tighter leading-none mb-4">
+All <span class="gradient-text" style="-webkit-text-fill-color: transparent;">Projects</span>
+</h1>
+<p class="hero-animate hero-delay-2 text-on-surface-variant text-lg md:text-xl max-w-2xl font-light">
+A comprehensive archive of my digital constructions — from game server infrastructure to modern web applications. Each project represents a unique engineering challenge.
+</p>
+</div>
+
+<div class="hero-animate hero-delay-3 flex items-center gap-6">
+<div class="text-center">
+<div class="text-3xl font-headline font-bold text-primary stat-number">4</div>
+<div class="text-[10px] uppercase tracking-widest text-neutral-500 font-label">Projects</div>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/20"></div>
+<div class="text-center">
+<div class="text-3xl font-headline font-bold text-tertiary stat-number">6+</div>
+<div class="text-[10px] uppercase tracking-widest text-neutral-500 font-label">Technologies</div>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/20"></div>
+<div class="text-center">
+<div class="text-3xl font-headline font-bold text-secondary stat-number">∞</div>
+<div class="text-[10px] uppercase tracking-widest text-neutral-500 font-label">Ambition</div>
+</div>
+</div>
+</div>
+
+<!-- Filter Tags -->
+<div class="hero-animate hero-delay-3 flex flex-wrap gap-3">
+<button class="tag px-4 py-2 rounded-full text-xs font-label uppercase tracking-wider border border-primary/30 bg-primary/10 text-primary" data-filter="all">All Projects</button>
+<button class="tag px-4 py-2 rounded-full text-xs font-label uppercase tracking-wider border border-outline-variant/20 text-neutral-400 hover:text-primary" data-filter="web">Web Apps</button>
+<button class="tag px-4 py-2 rounded-full text-xs font-label uppercase tracking-wider border border-outline-variant/20 text-neutral-400 hover:text-primary" data-filter="gaming">Gaming</button>
+<button class="tag px-4 py-2 rounded-full text-xs font-label uppercase tracking-wider border border-outline-variant/20 text-neutral-400 hover:text-primary" data-filter="tools">Dev Tools</button>
+</div>
+</div>
+</header>
+
+<!-- Projects Grid -->
+<main class="pb-32">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
+
+<!-- Project 1: SYNC_ENGINE -->
+<div class="reveal stagger-1 project-card bg-surface-container-low rounded-2xl border border-outline-variant/10 overflow-hidden" data-category="gaming">
+<div class="relative h-56 overflow-hidden">
+<img alt="SYNC Engine" class="w-full h-full object-cover opacity-60 hover:opacity-80 transition-opacity duration-500 hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcl6iDGav2fYImalrI02oiqL8VF_3LUdDrqI0K4ADDyoKxs0_x43iGEU-3DJ215zV4EMBluGxVT4nJlvNmuvfo4Ce-GKfBRDF4uyUdQUixqZhm-_zxPzYe_3T77hOKY43c_3Ssl7i95UYVGSwUKU16ONs_AcL_rxkvcIf_zzMJ-wZW8gNiSW4S2PMGKilUiFv_uArb10Cqv5fsGFbhMMSMz_HqVdlPFFK6UAptwJI90HqmsPA1-GR27zxXEuRa0hfFpG0X0gyFicls"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-label uppercase tracking-wider bg-neutral-950/70 backdrop-blur-md text-tertiary border border-tertiary/20">Featured</span>
+<span class="px-3 py-1 rounded-full text-[10px] font-label uppercase tracking-wider bg-neutral-950/70 backdrop-blur-md text-neutral-400 border border-neutral-700/30">Gaming</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-1">SYNC_ENGINE</h2>
+<span class="text-xs font-label text-tertiary uppercase tracking-[0.2em]">Game Server Infrastructure</span>
+</div>
+<span class="material-symbols-outlined text-3xl text-primary/40">dns</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+Real-time data orchestration platform for massive distributed game server networks. Built for high-throughput, low-latency environments with seamless state synchronization across multiple server instances. Handles thousands of concurrent connections with minimal overhead.
+</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Lua</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">FiveM</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Real-Time Sync</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Networking</span>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/10">
+<a href="https://alexltz0.github.io/SYNC_ENGINE/" target="_blank" class="btn-glow flex items-center gap-2 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+Live Demo
+</a>
+<a href="https://github.com/alexltz0/SYNC_ENGINE" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-surface-dim border border-outline-variant/10 rounded-full text-neutral-400 text-sm font-medium hover:text-on-surface hover:border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-lg">code</span>
+Source
+</a>
+</div>
+</div>
+</div>
+
+<!-- Project 2: SUPPORTSYSTEM -->
+<div class="reveal stagger-2 project-card bg-surface-container-low rounded-2xl border border-outline-variant/10 overflow-hidden" data-category="web">
+<div class="relative h-56 overflow-hidden bg-gradient-to-br from-secondary/10 via-surface-container-low to-primary/5 flex items-center justify-center">
+<div class="absolute inset-0 grid-pattern opacity-20"></div>
+<div class="relative flex flex-col items-center gap-4">
+<div class="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+<div class="flex gap-3">
+<div class="w-24 h-2 rounded-full bg-secondary/20"></div>
+<div class="w-16 h-2 rounded-full bg-secondary/10"></div>
+</div>
+<div class="flex gap-2">
+<div class="w-12 h-2 rounded-full bg-primary/10"></div>
+<div class="w-20 h-2 rounded-full bg-primary/15"></div>
+<div class="w-8 h-2 rounded-full bg-primary/10"></div>
+</div>
+</div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-label uppercase tracking-wider bg-neutral-950/70 backdrop-blur-md text-secondary border border-secondary/20">New</span>
+<span class="px-3 py-1 rounded-full text-[10px] font-label uppercase tracking-wider bg-neutral-950/70 backdrop-blur-md text-neutral-400 border border-neutral-700/30">Web App</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-1">SUPPORTSYSTEM</h2>
+<span class="text-xs font-label text-secondary uppercase tracking-[0.2em]">Ticket Management</span>
+</div>
+<span class="material-symbols-outlined text-3xl text-secondary/40">confirmation_number</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+A modern support ticket system for managing and resolving user requests efficiently. Features a clean, intuitive interface with real-time status tracking, priority management, and a streamlined workflow for both agents and users.
+</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">HTML</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Tailwind CSS</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">JavaScript</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Responsive</span>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/10">
+<a href="https://alexltz0.github.io/supportsystem/" target="_blank" class="btn-glow flex items-center gap-2 px-5 py-2.5 bg-secondary/10 border border-secondary/20 rounded-full text-secondary text-sm font-medium hover:bg-secondary/20 transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+Live Demo
+</a>
+<a href="https://github.com/alexltz0/supportsystem" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-surface-dim border border-outline-variant/10 rounded-full text-neutral-400 text-sm font-medium hover:text-on-surface hover:border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-lg">code</span>
+Source
+</a>
+</div>
+</div>
+</div>
+
+<!-- Project 3: NEXUS CLI -->
+<div class="reveal stagger-3 project-card bg-surface-container-low rounded-2xl border border-outline-variant/10 overflow-hidden" data-category="tools">
+<div class="relative h-56 overflow-hidden bg-surface-dim flex items-center justify-center p-8">
+<div class="w-full max-w-md">
+<div class="bg-neutral-950 rounded-lg border border-outline-variant/20 overflow-hidden shadow-2xl">
+<div class="flex items-center gap-2 px-4 py-2 border-b border-outline-variant/10">
+<div class="w-2.5 h-2.5 rounded-full bg-error/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary-container/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary/50"></div>
+<span class="ml-3 text-[9px] text-neutral-600 font-mono">nexus-cli v2.1.0</span>
+</div>
+<div class="p-4 font-mono text-[11px] leading-relaxed">
+<div class="text-primary/70">$ nexus init --stack dotnet</div>
+<div class="text-neutral-500 mt-1">› Scaffolding project...</div>
+<div class="text-neutral-500">› Linking services...</div>
+<div class="text-neutral-500">› Deploying to cluster_0</div>
+<div class="text-tertiary mt-1">✓ Ready in 1.2s</div>
+<div class="text-primary/70 mt-2">$ nexus monitor --live</div>
+<div class="text-neutral-500 mt-1">› CPU: <span class="text-tertiary">12%</span> | MEM: <span class="text-tertiary">340MB</span> | REQ/s: <span class="text-tertiary">2.4k</span></div>
+</div>
+</div>
+</div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-label uppercase tracking-wider bg-neutral-950/70 backdrop-blur-md text-neutral-400 border border-neutral-700/30">Dev Tools</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-1">NEXUS CLI</h2>
+<span class="text-xs font-label text-primary uppercase tracking-[0.2em]">Developer Toolkit</span>
+</div>
+<span class="material-symbols-outlined text-3xl text-primary/40">terminal</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+Terminal-native dev toolkit for scaffolding, deploying, and monitoring microservice clusters. Provides real-time performance metrics, automated deployment pipelines, and intelligent service discovery for distributed architectures.
+</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">CLI</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">.NET</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Microservices</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Docker</span>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/10">
+<span class="flex items-center gap-2 px-5 py-2.5 text-neutral-600 text-sm font-medium">
+<span class="material-symbols-outlined text-lg">lock</span>
+Private Repository
+</span>
+</div>
+</div>
+</div>
+
+<!-- Project 4: LUA_RUNNER -->
+<div class="reveal stagger-4 project-card bg-surface-container-low rounded-2xl border border-outline-variant/10 overflow-hidden" data-category="gaming">
+<div class="relative h-56 overflow-hidden">
+<img alt="LUA_RUNNER" class="w-full h-full object-cover opacity-60 hover:opacity-80 transition-opacity duration-500 hover:scale-105 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1WZdpDKzBaWxUZFz_l3j7DSCxnUu0o3NYEAyIzygXxNtT_q9SL0lvaenZhQJ4Yl5pF2NwKykB6KTTHJYDaYpxTHANvQbOgO3CFFuNqY04YnTgs-tEF430K_lV_5xeSNDUED0-El1ogwlyHbXF83qIaQs_gx1viFXCUdEStUhiTZAwMICajX5A58z9-oGBmuRf07It69oWRDdYZeoSZzBCL1jC4CTrnBGH1oZMU8ysXcbpAqS5BqpLUdP32euLR5JRjDWq7T9aTSni"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-label uppercase tracking-wider bg-neutral-950/70 backdrop-blur-md text-neutral-400 border border-neutral-700/30">Gaming</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-1">LUA_RUNNER</h2>
+<span class="text-xs font-label text-tertiary uppercase tracking-[0.2em]">Script Execution Engine</span>
+</div>
+<span class="material-symbols-outlined text-3xl text-tertiary/40">bolt</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+Custom scripting engine optimized for low-latency game events. Features JIT-style execution optimizations, sandboxed environments for secure script execution, and a rich API for interacting with game server internals. Designed for FiveM/RedM ecosystems.
+</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Lua</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">FiveM / RedM</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Game Scripting</span>
+<span class="text-[11px] bg-surface-dim px-3 py-1.5 rounded-full border border-outline-variant/10 text-on-surface-variant">Performance</span>
+</div>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/10">
+<a href="https://alexltz0.github.io/LUA_RUNNER/" target="_blank" class="btn-glow flex items-center gap-2 px-5 py-2.5 bg-tertiary/10 border border-tertiary/20 rounded-full text-tertiary text-sm font-medium hover:bg-tertiary/20 transition-all">
+<span class="material-symbols-outlined text-lg">visibility</span>
+Live Demo
+</a>
+<a href="https://github.com/alexltz0/LUA_RUNNER" target="_blank" class="flex items-center gap-2 px-5 py-2.5 bg-surface-dim border border-outline-variant/10 rounded-full text-neutral-400 text-sm font-medium hover:text-on-surface hover:border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-lg">code</span>
+Source
+</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</main>
+
+<!-- CTA Section -->
+<section class="py-20 border-t border-outline-variant/10">
+<div class="container mx-auto px-6 text-center">
+<div class="reveal max-w-2xl mx-auto">
+<h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4">Got a project in mind?</h2>
+<p class="text-on-surface-variant mb-8">I'm always open for new challenges and collaborations. Let's build something extraordinary together.</p>
+<a href="index.html#contact" class="btn-glow inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-bold tracking-tight transition-all hover:scale-[1.02]">
+<span>START A CONVERSATION</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-neutral-950 w-full px-8 py-12 border-t border-blue-900/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-blue-400 font-['Space_Grotesk'] text-lg font-bold tracking-tighter">ALEX</span>
+<p class="text-neutral-500 font-['Manrope'] text-xs uppercase tracking-widest text-center md:text-left">&copy; 2026 THE DIGITAL ARCHITECT. ENGINEERED IN THE VOID.</p>
+</div>
+<div class="flex items-center gap-8">
+<a class="text-neutral-500 hover:text-blue-400 transition-all font-['Manrope'] text-xs uppercase tracking-widest opacity-80 hover:opacity-100" href="#">GitHub</a>
+<a class="text-neutral-500 hover:text-blue-400 transition-all font-['Manrope'] text-xs uppercase tracking-widest opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+<a class="text-neutral-500 hover:text-blue-400 transition-all font-['Manrope'] text-xs uppercase tracking-widest opacity-80 hover:opacity-100" href="#">Discord</a>
+</div>
+</footer>
+
+<script>
+// === Scroll Reveal ===
+(function() {
+    var reveals = document.querySelectorAll('.reveal, .reveal-left');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+})();
+
+// === Card Mouse Glow Effect ===
+(function() {
+    var cards = document.querySelectorAll('.project-card');
+    cards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', x + '%');
+            card.style.setProperty('--mouse-y', y + '%');
+        });
+    });
+})();
+
+// === Filter Tags ===
+(function() {
+    var tags = document.querySelectorAll('[data-filter]');
+    var cards = document.querySelectorAll('[data-category]');
+
+    tags.forEach(function(tag) {
+        tag.addEventListener('click', function() {
+            var filter = tag.getAttribute('data-filter');
+
+            // Update active tag style
+            tags.forEach(function(t) {
+                t.classList.remove('bg-primary/10', 'text-primary', 'border-primary/30');
+                t.classList.add('text-neutral-400', 'border-outline-variant/20');
+            });
+            tag.classList.remove('text-neutral-400', 'border-outline-variant/20');
+            tag.classList.add('bg-primary/10', 'text-primary', 'border-primary/30');
+
+            // Filter cards
+            cards.forEach(function(card) {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = '';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(function() {
+                        card.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(function() { card.style.display = 'none'; }, 400);
+                }
+            });
+        });
+    });
+})();
+</script>
+</body>
+</html>

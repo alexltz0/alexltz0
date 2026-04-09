@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link rel="icon" type="image/x-icon" href="favicon.png">
 <script id="tailwind-config">
         tailwind.config = {
@@ -79,7 +78,8 @@
         }
     </script>
 <style>
-        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e5e2e1; }
+        body { font-family: 'Manrope', sans-serif; background-color: #131313; color: #e5e2e1; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
         .font-headline { font-family: 'Space Grotesk', sans-serif; }
         .text-3d {
             text-shadow: 0 1px 0 #2e5bff, 0 2px 0 #2e5bff, 0 3px 0 #2e5bff, 0 4px 0 #2e5bff, 0 5px 0 #2e5bff, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
@@ -93,9 +93,158 @@
         .neon-glow {
             box-shadow: 0 0 15px rgba(46, 91, 255, 0.2);
         }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(46, 91, 255, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(46, 91, 255, 0.3); }
+        }
+        @keyframes borderGlow {
+            0% { border-color: rgba(46, 91, 255, 0.1); }
+            50% { border-color: rgba(46, 91, 255, 0.4); }
+            100% { border-color: rgba(46, 91, 255, 0.1); }
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        @keyframes particle-float {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px) scale(0); opacity: 0; }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.9); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-scale.active { opacity: 1; transform: scale(1); }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+
+        .hero-animate { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .hero-delay-1 { animation-delay: 0.2s; }
+        .hero-delay-2 { animation-delay: 0.4s; }
+        .hero-delay-3 { animation-delay: 0.6s; }
+        .hero-delay-4 { animation-delay: 0.8s; }
+
+        .card-hover { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .card-hover:hover { transform: translateY(-8px); }
+        .card-hover:hover .card-glow { opacity: 1; }
+        .card-glow {
+            position: absolute; inset: 0; border-radius: inherit; opacity: 0;
+            transition: opacity 0.5s; pointer-events: none; z-index: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #b8c3ff, #2e5bff, #00dce5, #ecb1ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        .particle {
+            position: absolute; width: 4px; height: 4px; border-radius: 50%;
+            background: rgba(46, 91, 255, 0.4); pointer-events: none;
+            animation: particle-float linear infinite;
+        }
+
+        .morph-blob {
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        .btn-magnetic { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        .shimmer-line {
+            background: linear-gradient(90deg, transparent 0%, rgba(184, 195, 255, 0.1) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .cursor-dot {
+            width: 8px; height: 8px; background: #2e5bff;
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999;
+            transition: transform 0.15s ease; mix-blend-mode: screen; opacity: 0;
+        }
+        .cursor-ring {
+            width: 40px; height: 40px; border: 1.5px solid rgba(46, 91, 255, 0.4);
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
+            transition: all 0.2s ease; mix-blend-mode: screen; opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-ring { display: none; }
+        }
+
+        .tilt-card { transform-style: preserve-3d; transition: transform 0.3s ease; }
+        .tilt-card-inner { transform: translateZ(20px); }
     </style>
 </head>
 <body class="selection:bg-primary selection:text-on-primary">
+<!-- Custom Cursor (Desktop only) -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<!-- Particle Container -->
+<div id="particles" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
 <!-- TopNavBar -->
 <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center">
 <div class="bg-neutral-950/60 backdrop-blur-xl rounded-full mt-4 mx-auto max-w-fit px-6 py-2 border border-blue-500/20 font-['Space_Grotesk'] tracking-tight shadow-[0_0_20px_rgba(46,91,255,0.15)] flex items-center gap-8">
@@ -105,46 +254,61 @@
 <a class="nav-link text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="#projects" data-nav="projects">Projects</a>
 <a class="nav-link text-neutral-400 hover:text-blue-300 transition-colors duration-300 text-sm uppercase tracking-widest font-medium" href="#contact" data-nav="contact">Contact</a>
 </div>
-<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-5 py-1.5 rounded-full text-sm scale-95 active:scale-90 transition-transform">Hire Me</button>
+<button class="hidden md:inline-block bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-5 py-1.5 rounded-full text-sm scale-95 active:scale-90 transition-transform btn-magnetic" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+<!-- Mobile Hamburger -->
+<button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2 relative z-[70]" aria-label="Toggle menu">
+<span class="hamburger-line w-6 h-0.5 bg-blue-400 rounded transition-all duration-300"></span>
+<span class="hamburger-line w-6 h-0.5 bg-blue-400 rounded transition-all duration-300"></span>
+<span class="hamburger-line w-4 h-0.5 bg-blue-400 rounded transition-all duration-300 ml-auto"></span>
+</button>
 </div>
 </nav>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-neutral-950/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-8">
+<a class="text-3xl font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#stack" onclick="closeMobileMenu()">Stack</a>
+<a class="text-3xl font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#projects" onclick="closeMobileMenu()">Projects</a>
+<a class="text-3xl font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#contact" onclick="closeMobileMenu()">Contact</a>
+<button class="mt-8 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold px-8 py-3 rounded-full text-lg" onclick="closeMobileMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+</div>
 <!-- Hero Section -->
-<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" id="hero">
 <div class="absolute inset-0 grid-pattern opacity-40"></div>
-<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary-container/10 rounded-full blur-[120px]"></div>
-<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-[120px]"></div>
+<!-- Morphing Blobs -->
+<div class="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-primary-container/10 morph-blob blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-secondary-container/10 morph-blob blur-[120px]" style="animation-delay: -4s;"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-tertiary/5 morph-blob blur-[100px]" style="animation-delay: -2s;"></div>
 <div class="container mx-auto px-6 relative z-10 text-center">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/20 mb-8">
+<div class="hero-animate hero-delay-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/20 mb-8">
 <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
 <span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">System Status: Online</span>
 </div>
-<h1 class="text-6xl md:text-9xl font-headline font-bold text-on-surface tracking-tighter leading-none mb-6">
+<h1 class="hero-animate hero-delay-2 text-6xl md:text-9xl font-headline font-bold text-on-surface tracking-tighter leading-none mb-6">
 <span class="block">DIGITAL</span>
-<span class="block text-3d text-primary-fixed-dim">ARCHITECT</span>
+<span class="block gradient-text" style="-webkit-text-fill-color: transparent;">ARCHITECT</span>
 </h1>
-<p class="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl font-light mb-12 tracking-wide">
+<p class="hero-animate hero-delay-3 max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl font-light mb-12 tracking-wide">
                 I build high-performance digital ecosystems – from scalable .NET backends to complex game server architectures. Engineering meets vision.
             </p>
-<div class="flex flex-col md:flex-row items-center justify-center gap-6">
-<a class="group relative px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-md font-bold tracking-tight overflow-hidden transition-all hover:scale-[1.02]" href="#projects">
+<div class="hero-animate hero-delay-4 flex flex-col md:flex-row items-center justify-center gap-6">
+<a class="btn-magnetic group relative px-8 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-md font-bold tracking-tight overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(46,91,255,0.4)]" href="#projects">
 <span class="relative z-10">EXPLORE PROJECTS</span>
-<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
+<div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
 </a>
-<a class="px-8 py-4 border border-outline-variant/30 text-on-surface hover:bg-surface-bright/20 backdrop-blur-md rounded-md font-bold transition-all" href="#contact">
+<a class="btn-magnetic px-8 py-4 border border-outline-variant/30 text-on-surface hover:bg-surface-bright/20 hover:border-primary/40 backdrop-blur-md rounded-md font-bold transition-all hover:shadow-[0_0_20px_rgba(46,91,255,0.15)]" href="#contact">
                     GET IN TOUCH
                 </a>
 </div>
 </div>
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 hero-animate hero-delay-4">
 <span class="text-[10px] font-label uppercase tracking-[0.3em] text-on-surface-variant">Scroll for depth</span>
-<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent animate-pulse"></div>
 </div>
 </header>
 <!-- Skills / Mastery Section -->
 <section class="py-32 bg-surface-dim" id="stack">
 <div class="container mx-auto px-6">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-<div class="md:col-span-4 md:sticky md:top-32">
+<div class="md:col-span-4 md:sticky md:top-32 reveal-left">
 <h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-6 leading-tight">
                         Core Skills &amp; <span class="text-tertiary">Technologies</span>
 </h2>
@@ -159,7 +323,7 @@
 </div>
 <div class="md:col-span-8 grid grid-cols-1 gap-6">
 <!-- Skill Card 1 -->
-<div class="group p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-primary/40 transition-all duration-500">
+<div class="reveal stagger-1 group relative p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-primary/40 transition-all duration-500 card-hover">
 <div class="flex justify-between items-start mb-6">
 <span class="material-symbols-outlined text-4xl text-primary" data-icon="terminal">terminal</span>
 <span class="text-[10px] font-label text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">01 / BACKEND</span>
@@ -173,7 +337,7 @@
 </div>
 </div>
 <!-- Skill Card 2 -->
-<div class="group p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-secondary/40 transition-all duration-500">
+<div class="reveal stagger-2 group relative p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-secondary/40 transition-all duration-500 card-hover">
 <div class="flex justify-between items-start mb-6">
 <span class="material-symbols-outlined text-4xl text-secondary" data-icon="sports_esports">sports_esports</span>
 <span class="text-[10px] font-label text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">02 / GAMING</span>
@@ -187,7 +351,7 @@
 </div>
 </div>
 <!-- Skill Card 3 -->
-<div class="group p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-tertiary/40 transition-all duration-500">
+<div class="reveal stagger-3 group relative p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 hover:border-tertiary/40 transition-all duration-500 card-hover">
 <div class="flex justify-between items-start mb-6">
 <span class="material-symbols-outlined text-4xl text-tertiary" data-icon="code_blocks">code_blocks</span>
 <span class="text-[10px] font-label text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">03 / WEB</span>
@@ -209,17 +373,17 @@
 <div class="container mx-auto px-6">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 <div>
-<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-4 tracking-tighter">Selected <span class="text-primary">Works</span></h2>
+<h2 class="reveal text-4xl md:text-5xl font-headline font-bold text-on-surface mb-4 tracking-tighter">Selected <span class="text-primary">Works</span></h2>
 <p class="text-on-surface-variant max-w-xl">A look into my digital constructions – from gaming infrastructure to enterprise web apps.</p>
 </div>
-<button class="text-tertiary font-label text-sm uppercase tracking-widest flex items-center gap-2 group">
+<a href="projects.html" class="text-tertiary font-label text-sm uppercase tracking-widest flex items-center gap-2 group">
                     View All Projects
                     <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</button>
+</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[800px]">
 <!-- Project 1: Large Bento -->
-<div class="md:col-span-8 glass rounded-2xl p-1 relative overflow-hidden group">
+<div class="reveal stagger-1 md:col-span-8 glass rounded-2xl p-1 relative overflow-hidden group">
 <div class="absolute inset-0 z-0 scale-105 group-hover:scale-110 transition-transform duration-700">
 <img alt="SYNC Engine" class="w-full h-full object-cover opacity-50" data-alt="vibrant abstract digital data stream with electric blue and purple lines flowing through a dark void representing high speed networking" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcl6iDGav2fYImalrI02oiqL8VF_3LUdDrqI0K4ADDyoKxs0_x43iGEU-3DJ215zV4EMBluGxVT4nJlvNmuvfo4Ce-GKfBRDF4uyUdQUixqZhm-_zxPzYe_3T77hOKY43c_3Ssl7i95UYVGSwUKU16ONs_AcL_rxkvcIf_zzMJ-wZW8gNiSW4S2PMGKilUiFv_uArb10Cqv5fsGFbhMMSMz_HqVdlPFFK6UAptwJI90HqmsPA1-GR27zxXEuRa0hfFpG0X0gyFicls"/>
 </div>
@@ -239,27 +403,35 @@ server networks.</p>
 </div>
 </div>
 <!-- Project 2: Vertical Bento -->
-<div class="md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 flex flex-col group hover:border-secondary/30 transition-all">
+<div class="reveal stagger-2 md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 flex flex-col group hover:border-secondary/30 transition-all card-hover">
 <div class="mb-auto">
 <div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
-<span class="material-symbols-outlined text-secondary text-3xl" data-icon="shield_lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="support_agent" data-weight="fill" style="font-variation-settings: 'FILL' 1;">support_agent</span>
 </div>
-<h3 class="text-2xl font-headline font-bold mb-4">VOIDNET PROXY</h3>
-<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Encrypted reverse proxy layer with zero-trust authentication and real-time traffic analysis for distributed networks.</p>
+<h3 class="text-2xl font-headline font-bold mb-4">SUPPORTSYSTEM</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">A modern support ticket system for managing and resolving user requests efficiently with a clean, intuitive interface.</p>
 </div>
 <div class="space-y-4">
 <div class="flex justify-between items-center text-xs border-b border-outline-variant/10 pb-2">
 <span class="text-on-surface-variant">Type</span>
-<span class="text-on-surface">Network Security</span>
+<span class="text-on-surface">Web Application</span>
 </div>
 <div class="flex justify-between items-center text-xs border-b border-outline-variant/10 pb-2">
 <span class="text-on-surface-variant">Tech</span>
-<span class="text-on-surface">C#, WireGuard, Docker</span>
+<span class="text-on-surface">HTML, Tailwind, JS</span>
+</div>
+<div class="flex gap-3 mt-4">
+<button onclick="window.open('https://alexltz0.github.io/supportsystem/', '_blank').focus()" class="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+</button>
+<button onclick="window.open('https://github.com/alexltz0/supportsystem', '_blank').focus()" class="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="link">link</span>
+</button>
 </div>
 </div>
 </div>
 <!-- Project 3: Small Bento -->
-<div class="md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-all group">
+<div class="reveal stagger-3 md:col-span-4 bg-surface-container-high rounded-2xl p-8 border border-outline-variant/10 hover:border-primary/30 transition-all group card-hover">
 <h3 class="text-xl font-headline font-bold mb-3">NEXUS CLI</h3>
 <p class="text-on-surface-variant text-sm mb-6">Terminal-native dev toolkit for scaffolding, deploying, and monitoring microservice clusters.</p>
 <div class="w-full aspect-video bg-surface-dim rounded-lg overflow-hidden border border-outline-variant/5 flex items-center justify-center font-mono text-[10px] text-primary/60 leading-relaxed p-4">
@@ -271,7 +443,7 @@ server networks.</p>
 </div>
 </div>
 <!-- Project 4: Large Bento (LUA_RUNNER) -->
-<div class="md:col-span-8 glass rounded-2xl p-1 relative overflow-hidden group">
+<div class="reveal stagger-4 md:col-span-8 glass rounded-2xl p-1 relative overflow-hidden group">
 <div class="absolute inset-0 z-0 scale-105 group-hover:scale-110 transition-transform duration-700">
 <img alt="LUA_RUNNER" class="w-full h-full object-cover opacity-50" data-alt="abstract digital code execution environment with glowing lua script symbols and terminal output on a dark futuristic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1WZdpDKzBaWxUZFz_l3j7DSCxnUu0o3NYEAyIzygXxNtT_q9SL0lvaenZhQJ4Yl5pF2NwKykB6KTTHJYDaYpxTHANvQbOgO3CFFuNqY04YnTgs-tEF430K_lV_5xeSNDUED0-El1ogwlyHbXF83qIaQs_gx1viFXCUdEStUhiTZAwMICajX5A58z9-oGBmuRf07It69oWRDdYZeoSZzBCL1jC4CTrnBGH1oZMU8ysXcbpAqS5BqpLUdP32euLR5JRjDWq7T9aTSni"/>
 </div>
@@ -296,7 +468,7 @@ server networks.</p>
 <section class="py-32 bg-surface" id="contact">
 <div class="container mx-auto px-6">
 <div class="max-w-4xl mx-auto">
-<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl">
+<div class="reveal-scale bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden shadow-2xl">
 <!-- Terminal Header -->
 <div class="bg-surface-container-high px-4 py-3 border-b border-outline-variant/30 flex justify-between items-center">
 <div class="flex gap-2">
@@ -366,6 +538,7 @@ server networks.</p>
 <div id="scroll-progress" class="h-full bg-tertiary shadow-[0_0_10px_#00dce5] transition-none" style="width: 0%;"></div>
 </div>
 <script>
+  // === Scroll Progress Bar ===
   (function() {
     const bar = document.getElementById('scroll-progress');
     function updateProgress() {
@@ -378,6 +551,7 @@ server networks.</p>
     updateProgress();
   })();
 
+  // === Nav Active State ===
   (function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = [];
@@ -421,6 +595,220 @@ server networks.</p>
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  })();
+
+  // === Scroll Reveal (Intersection Observer) ===
+  (function() {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(function(el) { observer.observe(el); });
+  })();
+
+  // === Mobile Menu ===
+  var mobileMenuOpen = false;
+  var menuToggle = document.getElementById('menu-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+
+  function closeMobileMenu() {
+    mobileMenuOpen = false;
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+    var lines = menuToggle.querySelectorAll('.hamburger-line');
+    lines[0].style.transform = '';
+    lines[1].style.opacity = '';
+    lines[2].style.transform = '';
+    lines[2].style.width = '';
+  }
+
+  menuToggle.addEventListener('click', function() {
+    mobileMenuOpen = !mobileMenuOpen;
+    var lines = menuToggle.querySelectorAll('.hamburger-line');
+    if (mobileMenuOpen) {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lines[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+      lines[1].style.opacity = '0';
+      lines[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+      lines[2].style.width = '1.5rem';
+    } else {
+      closeMobileMenu();
+    }
+  });
+
+  // === Custom Cursor (Desktop) ===
+  (function() {
+    if (window.innerWidth < 768) return;
+    var dot = document.getElementById('cursor-dot');
+    var ring = document.getElementById('cursor-ring');
+    var mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', function(e) {
+      mouseX = e.clientX; mouseY = e.clientY;
+      dot.style.left = mouseX - 4 + 'px';
+      dot.style.top = mouseY - 4 + 'px';
+      dot.style.opacity = '1';
+      ring.style.opacity = '1';
+    });
+
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.left = ringX - 20 + 'px';
+      ring.style.top = ringY - 20 + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Grow ring on hover over interactive elements
+    var interactives = document.querySelectorAll('a, button, input, textarea');
+    interactives.forEach(function(el) {
+      el.addEventListener('mouseenter', function() {
+        ring.style.width = '60px'; ring.style.height = '60px';
+        ring.style.borderColor = 'rgba(46, 91, 255, 0.6)';
+        dot.style.transform = 'scale(1.5)';
+      });
+      el.addEventListener('mouseleave', function() {
+        ring.style.width = '40px'; ring.style.height = '40px';
+        ring.style.borderColor = 'rgba(46, 91, 255, 0.4)';
+        dot.style.transform = 'scale(1)';
+      });
+    });
+  })();
+
+  // === Floating Particles ===
+  (function() {
+    var container = document.getElementById('particles');
+    var colors = ['rgba(46,91,255,0.3)', 'rgba(0,220,229,0.2)', 'rgba(208,91,255,0.2)'];
+    function spawnParticle() {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.bottom = '-10px';
+      p.style.width = (Math.random() * 4 + 2) + 'px';
+      p.style.height = p.style.width;
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.animationDuration = (Math.random() * 10 + 8) + 's';
+      p.style.animationDelay = '0s';
+      container.appendChild(p);
+      setTimeout(function() { p.remove(); }, 18000);
+    }
+    // Spawn particles periodically
+    setInterval(spawnParticle, 800);
+    // Initial burst
+    for (var i = 0; i < 10; i++) { setTimeout(spawnParticle, i * 200); }
+  })();
+
+  // === Parallax on Hero Blobs ===
+  (function() {
+    var blobs = document.querySelectorAll('.morph-blob');
+    window.addEventListener('scroll', function() {
+      var st = window.scrollY;
+      blobs.forEach(function(blob, i) {
+        var speed = (i + 1) * 0.05;
+        blob.style.transform = 'translateY(' + (st * speed) + 'px)';
+      });
+    }, { passive: true });
+  })();
+
+  // === Tilt Effect on Cards ===
+  (function() {
+    if (window.innerWidth < 768) return;
+    var cards = document.querySelectorAll('.card-hover');
+    cards.forEach(function(card) {
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var centerX = rect.width / 2;
+        var centerY = rect.height / 2;
+        var rotateX = (y - centerY) / 20;
+        var rotateY = (centerX - x) / 20;
+        card.style.transform = 'translateY(-8px) perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+      });
+    });
+  })();
+
+  // === Magnetic Buttons ===
+  (function() {
+    if (window.innerWidth < 768) return;
+    var btns = document.querySelectorAll('.btn-magnetic');
+    btns.forEach(function(btn) {
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.15) + 'px, ' + (y * 0.15) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    });
+  })();
+
+  // === Typewriter Effect for Contact Section ===
+  (function() {
+    var heading = document.querySelector('#contact h2');
+    if (!heading) return;
+    var text = heading.textContent;
+    heading.textContent = '';
+    heading.style.minHeight = '2.5rem';
+    var typed = false;
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && !typed) {
+        typed = true;
+        var i = 0;
+        function type() {
+          if (i < text.length) {
+            heading.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, 40);
+          }
+        }
+        type();
+      }
+    }, { threshold: 0.5 });
+    observer.observe(heading);
+  })();
+
+  // === Number Counter for Footer Coordinates ===
+  (function() {
+    var coords = document.querySelectorAll('footer .font-mono');
+    coords.forEach(function(el) {
+      var text = el.textContent;
+      var match = text.match(/([\d.]+)/);
+      if (match) {
+        var target = parseFloat(match[1]);
+        var prefix = text.split(match[1])[0];
+        var counted = false;
+        var obs = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting && !counted) {
+            counted = true;
+            var current = 0;
+            var step = target / 60;
+            function count() {
+              current += step;
+              if (current >= target) {
+                el.textContent = prefix + target.toFixed(4);
+              } else {
+                el.textContent = prefix + current.toFixed(4);
+                requestAnimationFrame(count);
+              }
+            }
+            count();
+          }
+        }, { threshold: 0.5 });
+        obs.observe(el);
+      }
+    });
   })();
 </script>
 </body></html>
